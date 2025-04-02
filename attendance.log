@@ -1,0 +1,96 @@
+2025-03-31 21:18:38,247 - INFO - Attendance Tracker initialized. Monitoring folder: c:\Users\lokes\Downloads\face detect realtime\Attendance-using-face-qr-system\backend\uploads
+2025-03-31 21:50:32,261 - INFO - Attendance Tracker initialized. Monitoring folder: c:\Users\lokes\Downloads\face detect realtime\Attendance-using-face-qr-system\backend\uploads
+2025-03-31 21:56:42,486 - INFO - New image detected: c:\Users\lokes\Downloads\face detect realtime\Attendance-using-face-qr-system\backend\uploads\23112067_OS.jpg
+2025-03-31 21:56:43,492 - INFO - Processing attendance for roll number: 23112067, subject: OS
+2025-03-31 21:56:45,320 - INFO - Recorded attendance: ('23112067', 'OS', 'Present', 0.7920996773804693)
+2025-03-31 21:56:45,321 - INFO - Attendance marked PRESENT for 23112067 in OS
+2025-03-31 21:56:45,321 - INFO - Moved c:\Users\lokes\Downloads\face detect realtime\Attendance-using-face-qr-system\backend\uploads\23112067_OS.jpg to c:\Users\lokes\Downloads\face detect realtime\Attendance-using-face-qr-system\backend\processed\20250331215645_23112067_OS.jpg
+2025-03-31 21:58:00,412 - INFO - New image detected: c:\Users\lokes\Downloads\face detect realtime\Attendance-using-face-qr-system\backend\uploads\23112067_OS.jpg
+2025-03-31 21:58:01,415 - INFO - Processing attendance for roll number: 23112067, subject: OS
+2025-03-31 21:58:02,738 - INFO - Recorded attendance: ('23112067', 'OS', 'Present', 0.7920996773804693)
+2025-03-31 21:58:02,738 - INFO - Attendance marked PRESENT for 23112067 in OS
+2025-03-31 21:58:02,739 - ERROR - Failed to move file c:\Users\lokes\Downloads\face detect realtime\Attendance-using-face-qr-system\backend\uploads\23112067_OS.jpg: [WinError 2] The system cannot find the file specified: 'c:\\Users\\lokes\\Downloads\\face detect realtime\\Attendance-using-face-qr-system\\backend\\uploads\\23112067_OS.jpg' -> 'c:\\Users\\lokes\\Downloads\\face detect realtime\\Attendance-using-face-qr-system\\backend\\processed\\20250331215802_23112067_OS.jpg'
+2025-03-31 21:58:41,948 - INFO - New image detected: c:\Users\lokes\Downloads\face detect realtime\Attendance-using-face-qr-system\backend\uploads\23112064.jpg
+2025-03-31 21:58:42,949 - WARNING - Invalid filename format: 23112064.jpg. Expected format: rollnumber_subject.jpg
+2025-03-31 21:58:42,966 - INFO - Moved c:\Users\lokes\Downloads\face detect realtime\Attendance-using-face-qr-system\backend\uploads\23112064.jpg to c:\Users\lokes\Downloads\face detect realtime\Attendance-using-face-qr-system\backend\failed\20250331215842_23112064.jpg
+2025-03-31 21:58:42,966 - INFO - New image detected: c:\Users\lokes\Downloads\face detect realtime\Attendance-using-face-qr-system\backend\uploads\23112011.jpg
+2025-03-31 21:58:43,967 - WARNING - Invalid filename format: 23112011.jpg. Expected format: rollnumber_subject.jpg
+2025-03-31 21:58:43,967 - INFO - Moved c:\Users\lokes\Downloads\face detect realtime\Attendance-using-face-qr-system\backend\uploads\23112011.jpg to c:\Users\lokes\Downloads\face detect realtime\Attendance-using-face-qr-system\backend\failed\20250331215843_23112011.jpg
+2025-03-31 21:59:24,107 - INFO - New image detected: c:\Users\lokes\Downloads\face detect realtime\Attendance-using-face-qr-system\backend\uploads\anandh1-1721376588.jpg
+2025-03-31 21:59:25,107 - WARNING - Invalid filename format: anandh1-1721376588.jpg. Expected format: rollnumber_subject.jpg
+2025-03-31 21:59:25,107 - INFO - Moved c:\Users\lokes\Downloads\face detect realtime\Attendance-using-face-qr-system\backend\uploads\anandh1-1721376588.jpg to c:\Users\lokes\Downloads\face detect realtime\Attendance-using-face-qr-system\backend\failed\20250331215925_anandh1-1721376588.jpg
+2025-03-31 22:00:17,180 - INFO - New image detected: c:\Users\lokes\Downloads\face detect realtime\Attendance-using-face-qr-system\backend\uploads\23112064_MATH.jpg
+2025-03-31 22:00:18,181 - INFO - Processing attendance for roll number: 23112064, subject: MATH
+2025-03-31 22:00:18,818 - INFO - Recorded attendance: ('23112064', 'MATH', 'Mismatch', 0)
+2025-03-31 22:00:18,818 - WARNING - Face detected but didn't match roll number: 23112064
+2025-03-31 22:00:18,818 - INFO - Moved c:\Users\lokes\Downloads\face detect realtime\Attendance-using-face-qr-system\backend\uploads\23112064_MATH.jpg to c:\Users\lokes\Downloads\face detect realtime\Attendance-using-face-qr-system\backend\failed\20250331220018_23112064_MATH.jpg
+2025-03-31 22:00:18,818 - INFO - New image detected: c:\Users\lokes\Downloads\face detect realtime\Attendance-using-face-qr-system\backend\uploads\23112011_OS.jpg
+2025-03-31 22:00:19,827 - INFO - Processing attendance for roll number: 23112011, subject: OS
+2025-03-31 22:00:22,880 - INFO - Recorded attendance: ('23112011', 'OS', 'Mismatch', 0)
+2025-03-31 22:00:22,880 - WARNING - Face detected but didn't match roll number: 23112011
+2025-03-31 22:00:22,881 - INFO - Moved c:\Users\lokes\Downloads\face detect realtime\Attendance-using-face-qr-system\backend\uploads\23112011_OS.jpg to c:\Users\lokes\Downloads\face detect realtime\Attendance-using-face-qr-system\backend\failed\20250331220022_23112011_OS.jpg
+2025-03-31 22:06:00,000 - INFO - Loaded settings: {'enableLiveness': False}
+2025-03-31 22:06:00,008 - INFO - Starting background processor
+2025-03-31 22:06:00,008 - INFO - Background thread started
+2025-03-31 22:06:00,054 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:3000
+ * Running on http://192.168.1.9:3000
+2025-03-31 22:06:00,054 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-31 22:06:02,321 - INFO - Loading dashboard template from c:\Users\lokes\Downloads\face detect realtime\Attendance-using-face-qr-system\backend\templates\dashboard.html
+2025-03-31 22:06:02,392 - INFO - 127.0.0.1 - - [31/Mar/2025 22:06:02] "GET / HTTP/1.1" 200 -
+2025-03-31 22:06:02,478 - INFO - 127.0.0.1 - - [31/Mar/2025 22:06:02] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-03-31 22:06:02,543 - INFO - 127.0.0.1 - - [31/Mar/2025 22:06:02] "GET /stats HTTP/1.1" 200 -
+2025-03-31 22:06:05,440 - INFO - 127.0.0.1 - - [31/Mar/2025 22:06:05] "GET /stats HTTP/1.1" 200 -
+2025-03-31 22:06:08,441 - INFO - 127.0.0.1 - - [31/Mar/2025 22:06:08] "GET /stats HTTP/1.1" 200 -
+2025-03-31 22:06:11,449 - INFO - 127.0.0.1 - - [31/Mar/2025 22:06:11] "GET /stats HTTP/1.1" 200 -
+2025-03-31 22:06:13,206 - INFO - Loading dashboard template from c:\Users\lokes\Downloads\face detect realtime\Attendance-using-face-qr-system\backend\templates\dashboard.html
+2025-03-31 22:06:13,207 - INFO - 192.168.1.9 - - [31/Mar/2025 22:06:13] "GET / HTTP/1.1" 200 -
+2025-03-31 22:06:13,262 - INFO - 192.168.1.9 - - [31/Mar/2025 22:06:13] "GET /stats HTTP/1.1" 200 -
+2025-03-31 22:06:13,321 - INFO - 192.168.1.9 - - [31/Mar/2025 22:06:13] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-03-31 22:06:14,979 - INFO - 127.0.0.1 - - [31/Mar/2025 22:06:14] "GET /stats HTTP/1.1" 200 -
+2025-03-31 22:06:16,601 - INFO - 127.0.0.1 - - [31/Mar/2025 22:06:16] "POST /process_now HTTP/1.1" 200 -
+2025-03-31 22:06:16,615 - INFO - 127.0.0.1 - - [31/Mar/2025 22:06:16] "GET /stats HTTP/1.1" 200 -
+2025-03-31 22:06:18,009 - INFO - 127.0.0.1 - - [31/Mar/2025 22:06:18] "GET /stats HTTP/1.1" 200 -
+2025-03-31 22:06:20,437 - INFO - 127.0.0.1 - - [31/Mar/2025 22:06:20] "GET /stats HTTP/1.1" 200 -
+2025-03-31 22:06:23,437 - INFO - 127.0.0.1 - - [31/Mar/2025 22:06:23] "GET /stats HTTP/1.1" 200 -
+2025-03-31 22:06:26,439 - INFO - 127.0.0.1 - - [31/Mar/2025 22:06:26] "GET /stats HTTP/1.1" 200 -
+2025-03-31 22:06:29,441 - INFO - 127.0.0.1 - - [31/Mar/2025 22:06:29] "GET /stats HTTP/1.1" 200 -
+2025-03-31 22:06:32,441 - INFO - 127.0.0.1 - - [31/Mar/2025 22:06:32] "GET /stats HTTP/1.1" 200 -
+2025-03-31 22:06:35,441 - INFO - 127.0.0.1 - - [31/Mar/2025 22:06:35] "GET /stats HTTP/1.1" 200 -
+2025-03-31 22:06:35,558 - INFO - 127.0.0.1 - - [31/Mar/2025 22:06:35] "GET /download_attendance?date=2025-03-31 HTTP/1.1" 200 -
+2025-03-31 22:06:38,437 - INFO - 127.0.0.1 - - [31/Mar/2025 22:06:38] "GET /stats HTTP/1.1" 200 -
+2025-03-31 22:06:41,439 - INFO - 127.0.0.1 - - [31/Mar/2025 22:06:41] "GET /stats HTTP/1.1" 200 -
+2025-03-31 22:06:44,441 - INFO - 127.0.0.1 - - [31/Mar/2025 22:06:44] "GET /stats HTTP/1.1" 200 -
+2025-03-31 22:06:47,472 - INFO - 127.0.0.1 - - [31/Mar/2025 22:06:47] "GET /stats HTTP/1.1" 200 -
+2025-03-31 22:06:50,434 - INFO - 127.0.0.1 - - [31/Mar/2025 22:06:50] "GET /stats HTTP/1.1" 200 -
+2025-03-31 22:06:53,443 - INFO - 127.0.0.1 - - [31/Mar/2025 22:06:53] "GET /stats HTTP/1.1" 200 -
+2025-03-31 22:06:56,439 - INFO - 127.0.0.1 - - [31/Mar/2025 22:06:56] "GET /stats HTTP/1.1" 200 -
+2025-03-31 22:06:59,450 - INFO - 127.0.0.1 - - [31/Mar/2025 22:06:59] "GET /stats HTTP/1.1" 200 -
+2025-03-31 22:17:04,416 - INFO - Attendance Tracker initialized. Monitoring folder: c:\Users\lokes\Downloads\face detect realtime\Attendance-using-face-qr-system\backend\uploads
+2025-03-31 22:17:50,779 - INFO - New image detected: c:\Users\lokes\Downloads\face detect realtime\Attendance-using-face-qr-system\backend\uploads\23112067_MATH.jpg
+2025-03-31 22:17:51,780 - INFO - Processing attendance for roll number: 23112067, subject: MATH
+2025-03-31 22:17:52,191 - INFO - Recorded attendance: ('23112067', 'MATH', 'Present', 0.8129512544328769)
+2025-03-31 22:17:52,191 - INFO - Attendance marked PRESENT for 23112067 in MATH
+2025-03-31 22:17:52,191 - INFO - Moved c:\Users\lokes\Downloads\face detect realtime\Attendance-using-face-qr-system\backend\uploads\23112067_MATH.jpg to c:\Users\lokes\Downloads\face detect realtime\Attendance-using-face-qr-system\backend\processed\20250331221752_23112067_MATH.jpg
+2025-03-31 22:19:50,316 - INFO - Attendance Tracker initialized. Monitoring folder: c:\Users\lokes\Downloads\face detect realtime\Attendance-using-face-qr-system\backend\uploads
+2025-03-31 22:20:13,316 - INFO - New image detected: c:\Users\lokes\Downloads\face detect realtime\Attendance-using-face-qr-system\backend\uploads\20250331221752_23112067_MATH.jpg
+2025-03-31 22:20:14,316 - INFO - Processing attendance for roll number: 20250331221752, subject: 23112067_MATH
+2025-03-31 22:20:14,711 - INFO - Recorded attendance: ('20250331221752', '23112067_MATH', 'Mismatch', 0)
+2025-03-31 22:20:14,711 - WARNING - Face detected but didn't match roll number: 20250331221752
+2025-03-31 22:20:14,711 - INFO - Moved c:\Users\lokes\Downloads\face detect realtime\Attendance-using-face-qr-system\backend\uploads\20250331221752_23112067_MATH.jpg to c:\Users\lokes\Downloads\face detect realtime\Attendance-using-face-qr-system\backend\failed\20250331222014_20250331221752_23112067_MATH.jpg
+2025-03-31 22:20:58,954 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.9:5000
+2025-03-31 22:20:58,954 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-31 22:20:58,954 - INFO -  * Restarting with watchdog (windowsapi)
+2025-03-31 22:20:59,609 - WARNING -  * Debugger is active!
+2025-03-31 22:20:59,613 - INFO -  * Debugger PIN: 592-152-848
+2025-03-31 22:21:27,248 - INFO - Attendance Tracker initialized. Monitoring folder: c:\Users\lokes\Downloads\face detect realtime\Attendance-using-face-qr-system\backend\uploads
+2025-03-31 22:21:38,193 - INFO - New image detected: c:\Users\lokes\Downloads\face detect realtime\Attendance-using-face-qr-system\backend\uploads\20250331222014_20250331221752_23112067_MATH.jpg
+2025-03-31 22:21:39,197 - INFO - Processing attendance for roll number: 20250331222014, subject: 20250331221752_23112067_MATH
+2025-03-31 22:21:39,554 - INFO - Recorded attendance: ('20250331222014', '20250331221752_23112067_MATH', 'Mismatch', 0)
+2025-03-31 22:21:39,554 - WARNING - Face detected but didn't match roll number: 20250331222014
+2025-03-31 22:21:39,555 - INFO - Moved c:\Users\lokes\Downloads\face detect realtime\Attendance-using-face-qr-system\backend\uploads\20250331222014_20250331221752_23112067_MATH.jpg to c:\Users\lokes\Downloads\face detect realtime\Attendance-using-face-qr-system\backend\failed\20250331222139_20250331222014_20250331221752_23112067_MATH.jpg
+2025-03-31 22:25:46,740 - INFO - Attendance Tracker initialized. Monitoring folder: c:\Users\lokes\Downloads\face detect realtime\Attendance-using-face-qr-system\backend\uploads

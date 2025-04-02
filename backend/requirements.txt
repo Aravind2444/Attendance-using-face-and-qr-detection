@@ -1,0 +1,10 @@
+Flask==2.0.1
+pandas==1.3.3
+numpy==1.21.2
+opencv-python==4.5.3
+scikit-learn==1.0
+pillow==8.3.2
+flask-cors==3.0.10
+
+curl -o shape_predictor_68_face_landmarks.dat.bz2 http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2
+bzip2 -d shape_predictor_68_face_landmarks.dat.bz2

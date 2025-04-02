@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e3f2fd;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #90caf9;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #388e3c;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #90caf9;
+            padding: 10px;
+        }
+        th {
+            background-color: #7e57c2;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Attendance Viewer</h2>
+        <input type="text" id="rollNumber" placeholder="Enter Roll Number">
+        <button onclick="fetchAttendance()">Search</button>
+        <table id="attendanceTable">
+            <thead>
+                <tr>
+                    <th>Student ID</th>
+                    <th>Subject</th>
+                    <th>Date and Time</th>
+                    <th>Status</th>
+                    <th>Confidence</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Attendance records will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function fetchAttendance() {
+            const rollNumber = document.getElementById("rollNumber").value;
+            if (!rollNumber) {
+                alert("Please enter a roll number");
+                return;
+            }
+            
+            fetch("http://127.0.0.1:5000/get_attendance")
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.querySelector("#attendanceTable tbody");
+                    tableBody.innerHTML = "";
+                    
+                    const filteredData = data.filter(record => record["Student ID"] == rollNumber);
+                    
+                    filteredData.forEach(record => {
+                        const row = `<tr>
+                            <td>${record["Student ID"]}</td>
+                            <td>${record["Subject"]}</td>
+                            <td>${record["Date and Time"]}</td>
+                            <td>${record["Status"]}</td>
+                            <td>${record["Confidence"]}</td>
+                        </tr>`;
+                        tableBody.innerHTML += row;
+                    });
+                    
+                    if (filteredData.length === 0) {
+                        tableBody.innerHTML = "<tr><td colspan='5'>No records found</td></tr>";
+                    }
+                })
+                .catch(error => console.error("Error fetching attendance:", error));
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Selfie</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <div id="subjectDisplay" class="subject-header"></div>
+        <h2>Take Attendance Selfie</h2>
+
+        <canvas id="canvas" style="display: none;"></canvas>
+
+        <form id="selfieForm">
+            <input type="text" id="rollNumber" placeholder="Enter Roll Number" required>
+            <button type="button" id="captureBtn">Take Selfie</button>
+            <button type="submit" id="submitBtn">Submit Attendance</button>
+        </form>
+
+        <button id="logoutButton" class="logout-btn">Logout</button>
+    </div>
+
+    <script src="../js/selfie.js"></script>
+</body>
+
+</html>

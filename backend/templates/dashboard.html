@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { padding-bottom: 50px; }
+        .status-card { transition: all 0.3s; }
+        .recent-entry { animation: fadeIn 1s; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .toggle-switch { transform: scale(1.5); margin-left: 10px; }
+        .settings-card { background-color: #f8f9fa; border-left: 4px solid #0d6efd; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-primary mb-4">
+        <div class="container">
+            <span class="navbar-brand">Automated Attendance System</span>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <!-- Settings Card -->
+        <div class="card mb-4 settings-card">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <h5>System Settings</h5>
+                        <div class="form-check form-switch mt-3">
+                            <label class="form-check-label me-3" for="livenessToggle">
+                                <strong>Liveness Detection:</strong>
+                            </label>
+                            <input class="form-check-input toggle-switch" type="checkbox" id="livenessToggle">
+                            <span class="ms-2 text-muted" id="livenessStatus">(OFF)</span>
+                        </div>
+                        <small class="text-muted d-block mt-1">Enable to detect fake photos. Disable to process all images.</small>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <button id="saveSettings" class="btn btn-sm btn-outline-primary me-2">Save Settings</button>
+                        <button id="processNow" class="btn btn-primary">Process All Images</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Stats Row -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="card bg-info text-white">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Processed</h5>
+                        <h2 id="processedCount">0</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-success text-white">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Successful</h5>
+                        <h2 id="successfulCount">0</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-danger text-white">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Rejected</h5>
+                        <h2 id="rejectedCount">0</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-warning text-dark">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Today's Attendance</h5>
+                        <h2 id="todayCount">0</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Activity and Download Row -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">Recent Activity</div>
+                    <div class="card-body">
+                        <p><strong>Last processed:</strong> <span id="lastProcessed">-</span></p>
+                        <p><strong>Last recognized:</strong> <span id="lastRecognized">-</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">Download Attendance</div>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <input type="date" id="attendanceDate" class="form-control">
+                            <button class="btn btn-outline-secondary" id="downloadBtn">Download CSV</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Recent Entries Table -->
+        <div class="card">
+            <div class="card-header">Recent Entries</div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Roll Number</th>
+                                <th>Time</th>
+                                <th>Confidence</th>
+                                <th>Method</th>
+                                <th>File</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recentEntries">
+                            <!-- Entries will be added here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Set default date to today
+        document.getElementById('attendanceDate').valueAsDate = new Date();
+        
+        // Settings object
+        let settings = {
+            enableLiveness: false
+        };
+        
+        // Initialize toggle based on saved settings
+        function loadSettings() {
+            // Try to get from localStorage first
+            const savedSettings = localStorage.getItem('attendanceSettings');
+            if (savedSettings) {
+                try {
+                    settings = JSON.parse(savedSettings);
+                } catch (e) {
+                    console.error('Error parsing saved settings:', e);
+                }
+            }
+            
+            // Update UI
+            document.getElementById('livenessToggle').checked = settings.enableLiveness;
+            updateLivenessStatus();
+        }
+        
+        // Update the status text next to toggle
+        function updateLivenessStatus() {
+            const status = settings.enableLiveness ? 'ON' : 'OFF';
+            document.getElementById('livenessStatus').textContent = `(${status})`;
+        }
+        
+        // Save settings
+        document.getElementById('saveSettings').addEventListener('click', function() {
+            // Update settings from UI
+            settings.enableLiveness = document.getElementById('livenessToggle').checked;
+            
+            // Save to localStorage
+            localStorage.setItem('attendanceSettings', JSON.stringify(settings));
+            
+            // Send to server
+            fetch('/update_settings', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(settings)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Settings saved successfully');
+            })
+            .catch(error => {
+                console.error('Error saving settings:', error);
+                alert('Error saving settings');
+            });
+            
+            // Update UI
+            updateLivenessStatus();
+        });
+        
+        // Process now button
+        document.getElementById('processNow').addEventListener('click', function() {
+            const button = this;
+            button.disabled = true;
+            button.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Processing...';
+            
+            fetch('/process_now', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ check_liveness: settings.enableLiveness })
+            })
+            .then(response => response.json())
+            .then(data => {
+                updateStats();
+                alert(`Processed ${data.processed_count} images`);
+                button.disabled = false;
+                button.textContent = 'Process All Images';
+            })
+            .catch(error => {
+                console.error('Error processing images:', error);
+                alert('Error processing images');
+                button.disabled = false;
+                button.textContent = 'Process All Images';
+            });
+        });
+        
+        // Toggle switch
+        document.getElementById('livenessToggle').addEventListener('change', function() {
+            settings.enableLiveness = this.checked;
+            updateLivenessStatus();
+        });
+        
+        // Download button
+        document.getElementById('downloadBtn').addEventListener('click', function() {
+            const date = document.getElementById('attendanceDate').value;
+            window.location.href = `/download_attendance?date=${date}`;
+        });
+        
+        // Update stats from server
+        function updateStats() {
+            fetch('/stats')
+                .then(response => response.json())
+                .then(data => {
+                    // Update counters
+                    document.getElementById('processedCount').textContent = data.processed_count || 0;
+                    document.getElementById('successfulCount').textContent = data.successful_count || 0;
+                    document.getElementById('rejectedCount').textContent = data.rejected_count || 0;
+                    document.getElementById('todayCount').textContent = data.today_attendance_count || 0;
+                    document.getElementById('lastProcessed').textContent = data.last_processed || '-';
+                    document.getElementById('lastRecognized').textContent = data.last_recognized || '-';
+                    
+                    // Update server settings if available
+                    if (data.settings && data.settings.enableLiveness !== undefined) {
+                        settings.enableLiveness = data.settings.enableLiveness;
+                        document.getElementById('livenessToggle').checked = settings.enableLiveness;
+                        updateLivenessStatus();
+                    }
+                    
+                    // Update recent entries
+                    const entriesTable = document.getElementById('recentEntries');
+                    entriesTable.innerHTML = '';
+                    
+                    if (data.recent_entries && data.recent_entries.length > 0) {
+                        data.recent_entries.forEach(entry => {
+                            const row = document.createElement('tr');
+                            row.className = 'recent-entry';
+                            row.innerHTML = `
+                                <td>${entry.roll_number || '-'}</td>
+                                <td>${entry.time || '-'}</td>
+                                <td>${entry.confidence || '-'}</td>
+                                <td>${entry.method || '-'}</td>
+                                <td>${entry.file || '-'}</td>
+                            `;
+                            entriesTable.appendChild(row);
+                        });
+                    } else {
+                        entriesTable.innerHTML = '<tr><td colspan="5" class="text-center">No recent entries</td></tr>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error updating stats:', error);
+                    // Still show something in case of error
+                    document.getElementById('recentEntries').innerHTML = 
+                        '<tr><td colspan="5" class="text-center text-muted">Error loading data</td></tr>';
+                });
+        }
+        
+        // Initialize
+        loadSettings();
+        updateStats();
+        
+        // Update stats periodically
+        setInterval(updateStats, 3000);
+    </script>
+</body>
+</html>

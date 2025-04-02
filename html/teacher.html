@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Panel</title>
+    <link rel="stylesheet" href="../styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+</head>
+
+<body>
+    <h2>Teacher Panel</h2>
+
+    <label for="subject">Select Subject:</label>
+    <select id="subject">
+        <option value="OS">Operating Systems</option>
+        <option value="DAA">Design & Analysis of Algorithms</option>
+        <option value="CN">Computer Networks</option>
+        <option value="DP">Design Project</option>
+    </select>
+
+    <button id="generateQR">Generate QR Code</button>
+    <div id="qrcode"></div>
+
+    <script src="../js/teacher.js"></script>
+</body>
+
+</html>
